@@ -84,6 +84,13 @@
   .sp { display: flex; align-items: flex-end; gap: 22px; }
   .sp div { text-align: center; font: 400 13px 'Onest'; color: var(--muted); }
   .sp i { display: block; background: var(--soft); border-radius: 4px; width: 46px; margin: 0 auto 8px; }
+
+  .pc { background: var(--panel); border-radius: 24px; padding: 20px 22px 22px; display: flex; flex-direction: column; height: 270px; }
+  .pc.best { background: var(--g); color: #fff; }
+  .pc .tab { align-self: flex-start; height: 32px; padding: 0 13px; border-radius: 999px; background: #fff; font: 500 14px 'Onest'; }
+  .pc.best .tab { background: rgba(255,255,255,.14); color: #fff; }
+  .pc .card, .pc.best .card { background: none; border-radius: 0; padding: 0; height: auto; flex: 1; margin-top: 34px; }
+  .pc + .cap, .pc .cap { margin-top: 10px; }
 </style>
 </head>
 <body>
@@ -167,8 +174,8 @@
   <section>
     <h3>Карточка цены</h3>
     <div class="row">
-      <div class="pc best"><span class="tab">до 30 октября</span><div class="card"><b>249 999 ₽</b><span>одно занятие — 9 999 ₽</span><span class="tag">выгода — 124 976 ₽</span></div><div class="cap"><b>Выделенная</b> · ближайшая дата</div></div>
-      <div class="pc"><span class="tab">до 15 ноября</span><div class="card"><b>259 999 ₽</b><span>одно занятие — 10 400 ₽</span><span class="tag">выгода — 114 976 ₽</span></div><div class="cap"><b>Обычная</b></div></div>
+      <div style="width:250px"><div class="pc best"><span class="tab">до 30 октября</span><div class="card"><b>249 999 ₽</b><span>одно занятие — 9 999 ₽</span><span class="tag">выгода — 124 976 ₽</span></div></div><div class="cap"><b>Выделенная</b> · ближайшая дата</div></div>
+      <div style="width:250px"><div class="pc"><span class="tab">до 15 ноября</span><div class="card"><b>259 999 ₽</b><span>одно занятие — 10 400 ₽</span><span class="tag">выгода — 114 976 ₽</span></div></div><div class="cap"><b>Обычная</b></div></div>
     </div>
   </section>
 

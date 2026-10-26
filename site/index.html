@@ -437,6 +437,16 @@
   body.menu-open { overflow: hidden; }
   body.menu-open .mnav { position: fixed; }
   @media (max-width: 480px) { #form input.inp { font-size: 15px; } }
+
+  /* карточки цен: цельная карточка, дата — плашкой внутри */
+  #price .row > div { background: var(--panel); border-radius: 26px; padding: 22px 24px 24px; display: flex; flex-direction: column; min-height: 290px; }
+  #price .row > div.best { background: var(--g); color: #fff; }
+  #price .tab { align-self: flex-start; height: 34px; padding: 0 14px; border-radius: 999px; background: #fff; color: var(--g); font: 500 14px 'Onest'; }
+  #price .best .tab { background: rgba(255,255,255,.14); color: #fff; }
+  #price .card, #price .best .card { background: none; border-radius: 0; padding: 0; height: auto; flex: 1; margin-top: 40px; }
+  @media (max-width: 1100px) { #price .row > div { padding: 18px 16px 18px; min-height: 250px; } #price .tab { height: 30px; padding: 0 11px; font-size: 13px; } #price .card { margin-top: 30px; } }
+  @media (max-width: 900px) { #price .row > div { min-height: 220px; } }
+  @media (max-width: 480px) { #price .row > div { min-height: 0; padding: 20px; } #price .card { margin-top: 24px; } }
 </style>
 </head>
 <body>
