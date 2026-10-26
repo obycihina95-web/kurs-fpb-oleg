@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Курс ФПБ — UI-кит</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --panel:#f2f3f0; --ink:#13201c; --muted:#6f7773; --g:#0f4a3f; --gh:#0b3a31; --gd:#00241f; --soft:#dde9e1; --softInk:#1f5a47; --tan:#c29a5b; --line:rgba(0,0,0,.09); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Onest', sans-serif; color: var(--ink); background: #fff; }
+  #kit { width: 1440px; padding: 60px 60px 80px; }
+  h1 { font: 400 64px/1 'Onest'; letter-spacing: -.035em; }
+  .sub { font: 400 18px 'Onest'; color: var(--muted); margin-top: 14px; }
+  section { margin-top: 70px; padding-top: 30px; border-top: 1px solid var(--line); }
+  h3 { font: 500 14px 'Onest'; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 28px; }
+  .row { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start; }
+  .cap { font: 400 13px/1.4 'Onest'; color: var(--muted); margin-top: 10px; }
+  .cap b { color: var(--ink); font-weight: 500; }
+
+  .sw { width: 190px; }
+  .sw .c { height: 120px; border-radius: 20px; border: 1px solid var(--line); }
+
+  .ty { display: grid; grid-template-columns: 220px 1fr; gap: 20px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .ty .m { font: 400 13px/1.5 'Onest'; color: var(--muted); }
+
+  .tag { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: 999px; background: var(--soft); color: var(--softInk); font: 500 14px 'Onest'; white-space: nowrap; }
+  .tag.w { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+  .n { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 28px; padding: 0 10px; border-radius: 999px; border: 1px solid var(--line); font: 500 13px 'Onest'; color: var(--muted); }
+  .btn { display: inline-flex; align-items: center; gap: 12px; height: 56px; padding: 0 30px; border-radius: 999px; background: var(--g); color: #fff; font: 500 17px 'Onest'; white-space: nowrap; }
+  .btn.hover { background: var(--gh); box-shadow: 0 10px 24px rgba(15,74,63,.28); }
+  .btn.press { background: var(--gd); transform: scale(.98); }
+  .btn.dis { background: #d9dcd9; color: #8c938f; }
+  .btn.light { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+  .btn.light.hover { background: var(--panel); }
+  .btn.arr { padding: 0 8px 0 30px; justify-content: space-between; min-width: 320px; }
+  .ar { width: 40px; height: 40px; border-radius: 50%; background: var(--soft); color: var(--g); display: grid; place-items: center; flex: none; }
+  .ar.hover { background: var(--g); color: #fff; }
+  .ar.wb { background: #fff; color: var(--ink); }
+  .ar svg { width: 15px; height: 15px; }
+  .burger { width: 46px; height: 46px; border-radius: 50%; background: var(--panel); position: relative; }
+  .burger i { position: absolute; left: 14px; right: 14px; height: 1.6px; background: var(--ink); }
+  .burger i:first-child { top: 19px; } .burger i:last-child { top: 26px; }
+  .x { width: 46px; height: 46px; border-radius: 50%; background: var(--g); position: relative; }
+  .x::before, .x::after { content: ''; position: absolute; left: 14px; right: 14px; top: 22px; height: 1.6px; background: #fff; transform: rotate(45deg); }
+  .x::after { transform: rotate(-45deg); }
+
+  .mod { width: 640px; background: var(--panel); border-radius: 28px; }
+  .mod .s { display: grid; grid-template-columns: 90px 1fr auto auto; gap: 18px; align-items: center; padding: 24px 24px 24px 30px; }
+  .mod .no { font: 300 52px/1 'Onest'; letter-spacing: -.05em; color: var(--g); }
+  .mod .tt small { display: block; font: 500 12px 'Onest'; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .mod .tt b { font: 400 24px/1.15 'Onest'; letter-spacing: -.025em; }
+  .mod .tag { background: #fff; color: var(--ink); }
+  .pl { width: 50px; height: 50px; border-radius: 50%; background: #fff; position: relative; }
+  .pl::before, .pl::after { content: ''; position: absolute; left: 17px; right: 17px; top: 24px; height: 1.6px; background: var(--ink); }
+  .pl::after { transform: rotate(90deg); }
+  .mod.open .pl { background: var(--g); } .mod.open .pl::before, .mod.open .pl::after { background: #fff; } .mod.open .pl::after { transform: none; }
+  .mod.hov { background: #e9ebe7; }
+  .mod .body { padding: 0 24px 24px 138px; }
+  .mod .body li { list-style: none; display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); font: 400 14.5px/1.45 'Onest'; }
+
+  .fbox { width: 420px; background: var(--gd); border-radius: 26px; padding: 26px; }
+  .inp { height: 60px; border-radius: 999px; border: 1px solid rgba(246,232,207,.2); display: flex; align-items: center; padding: 0 24px; font: 400 16px 'Onest'; color: #8fa69e; }
+  .inp.focus { border-color: #f4ecdc; color: #f4ecdc; }
+  .inp.fill { color: #fff; }
+  .inp.err { border-color: #e2836f; color: #fff; }
+  .errt { font: 400 13px 'Onest'; color: #e2836f; margin: 8px 0 0 24px; }
+
+  .pc { width: 250px; }
+  .pc .tab { display: inline-flex; height: 44px; align-items: center; padding: 0 20px; background: var(--panel); border-radius: 18px 18px 0 0; font: 500 15px 'Onest'; color: var(--g); }
+  .pc .card { background: var(--panel); border-radius: 0 24px 24px 24px; padding: 22px; height: 220px; display: flex; flex-direction: column; }
+  .pc .card b { font: 400 36px/1 'Onest'; letter-spacing: -.035em; }
+  .pc .card span { font: 400 14px 'Onest'; color: var(--muted); margin-top: 10px; }
+  .pc .card .tag { margin-top: auto; align-self: flex-start; }
+  .pc.best .tab, .pc.best .card { background: var(--g); color: #fff; }
+  .pc.best .card span { color: rgba(255,255,255,.75); } .pc.best .card .tag { background: #fff; color: var(--g); }
+
+  table.grid { border-collapse: collapse; width: 100%; font: 400 15px 'Onest'; }
+  table.grid th, table.grid td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  table.grid th { font: 500 13px 'Onest'; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .gv { display: flex; gap: 4px; height: 26px; }
+  .gv i { flex: 1; background: rgba(15,74,63,.14); border-radius: 3px; }
+  .sp { display: flex; align-items: flex-end; gap: 22px; }
+  .sp div { text-align: center; font: 400 13px 'Onest'; color: var(--muted); }
+  .sp i { display: block; background: var(--soft); border-radius: 4px; width: 46px; margin: 0 auto 8px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="arr" viewBox="0 0 16 16"><path d="M3 13 13 3M5.5 3H13v7.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+<div id="kit">
+  <h1>UI-кит · Курс ФПБ</h1>
+  <div class="sub">Цвета, типографика, компоненты и их состояния, сетка и отступы для 5 адаптаций</div>
+
+  <section>
+    <h3>Цвета</h3>
+    <div class="row">
+      <div class="sw"><div class="c" style="background:#0f4a3f"></div><div class="cap"><b>Зелёный · акцент</b><br>#0F4A3F — кнопки, акценты</div></div>
+      <div class="sw"><div class="c" style="background:#0b3a31"></div><div class="cap"><b>Зелёный · наведение</b><br>#0B3A31</div></div>
+      <div class="sw"><div class="c" style="background:#00241f"></div><div class="cap"><b>Тёмно-зелёный</b><br>#00241F — тёмные блоки</div></div>
+      <div class="sw"><div class="c" style="background:#dde9e1"></div><div class="cap"><b>Мятный</b><br>#DDE9E1 — плашки, стрелки</div></div>
+      <div class="sw"><div class="c" style="background:#c29a5b"></div><div class="cap"><b>Беж · акцент</b><br>#C29A5B — кавычки</div></div>
+      <div class="sw"><div class="c" style="background:#f2f3f0"></div><div class="cap"><b>Панель</b><br>#F2F3F0 — подложки</div></div>
+      <div class="sw"><div class="c" style="background:#13201c"></div><div class="cap"><b>Текст</b><br>#13201C</div></div>
+      <div class="sw"><div class="c" style="background:#6f7773"></div><div class="cap"><b>Вторичный текст</b><br>#6F7773</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Типографика · Onest</h3>
+    <div class="ty"><div class="m">H1 · Regular 68 / 98%<br>трекинг −3%, капс<br>моб. 34</div><div style="font:400 68px/.98 'Onest';letter-spacing:-.03em;text-transform:uppercase">Курс финансового</div></div>
+    <div class="ty"><div class="m">H2 · Regular 60 / 102%<br>трекинг −3.5%<br>моб. 30</div><div style="font:400 60px/1.02 'Onest';letter-spacing:-.035em">Цели переобучения:</div></div>
+    <div class="ty"><div class="m">H3 · Regular 30 / 115%<br>моб. 18</div><div style="font:400 30px/1.15 'Onest';letter-spacing:-.025em">Очищение ментальности на пути к процветанию</div></div>
+    <div class="ty"><div class="m">Цифры · Light 170<br>моб. 90</div><div style="font:300 120px/.85 'Onest';letter-spacing:-.06em;color:#0f4a3f">25</div></div>
+    <div class="ty"><div class="m">Текст · Regular 18–19 / 140%<br>моб. 15</div><div style="font:400 19px/1.4 'Onest'">Кто хочет значительно повысить свой доход</div></div>
+    <div class="ty"><div class="m">Мелкий · Regular 15 / 145%<br>моб. 14</div><div style="font:400 15px/1.45 'Onest';color:#6f7773">(*Тариф по акции действует в день совершения оплаты)</div></div>
+    <div class="ty"><div class="m">Надпись · Medium 13<br>капс, трекинг +8%</div><div style="font:500 13px 'Onest';letter-spacing:.08em;text-transform:uppercase;color:#6f7773">Программа</div></div>
+  </section>
+
+  <section>
+    <h3>Кнопки · состояния</h3>
+    <div class="row">
+      <div><span class="btn">Записаться на курс</span><div class="cap"><b>Обычное</b></div></div>
+      <div><span class="btn hover">Записаться на курс</span><div class="cap"><b>Наведение</b> · #0B3A31 + тень</div></div>
+      <div><span class="btn press">Записаться на курс</span><div class="cap"><b>Нажатие</b> · #00241F</div></div>
+      <div><span class="btn dis">Записаться на курс</span><div class="cap"><b>Неактивная</b></div></div>
+    </div>
+    <div class="row" style="margin-top:26px">
+      <div><span class="btn light">Записаться на курс</span><div class="cap"><b>Светлая</b> · на фото</div></div>
+      <div><span class="btn light hover">Записаться на курс</span><div class="cap"><b>Светлая · наведение</b></div></div>
+      <div style="background:#00241f;padding:16px;border-radius:20px"><span class="btn arr" style="background:#fff;color:#00241f">Записаться на курс <span class="ar" style="background:#0f4a3f;color:#fff"><svg><use href="#arr"/></svg></span></span><div class="cap" style="color:#9fb5ad"><b style="color:#fff">В форме</b> · со стрелкой</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Мелкие элементы</h3>
+    <div class="row" style="align-items:center;gap:30px">
+      <div><span class="tag">Старт январь 2027</span><div class="cap"><b>Плашка</b></div></div>
+      <div><span class="tag w">2027–2028</span><div class="cap"><b>Плашка светлая</b></div></div>
+      <div><span class="n">01</span><div class="cap"><b>Номер</b></div></div>
+      <div><span class="ar"><svg><use href="#arr"/></svg></span><div class="cap"><b>Стрелка</b></div></div>
+      <div><span class="ar hover"><svg><use href="#arr"/></svg></span><div class="cap"><b>Стрелка · наведение</b></div></div>
+      <div><span class="burger" style="display:block"><i></i><i></i></span><div class="cap"><b>Бургер</b></div></div>
+      <div><span class="x" style="display:block"></span><div class="cap"><b>Закрыть меню</b></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Модуль программы · состояния</h3>
+    <div class="row">
+      <div><div class="mod"><div class="s"><span class="no">02</span><div class="tt"><small>Модуль 2 · темы 11–17</small><b>Очищение ментальности</b></div><span class="tag">7 тем</span><span class="pl"></span></div></div><div class="cap"><b>Свёрнут</b></div></div>
+      <div><div class="mod hov"><div class="s"><span class="no">02</span><div class="tt"><small>Модуль 2 · темы 11–17</small><b>Очищение ментальности</b></div><span class="tag">7 тем</span><span class="pl"></span></div></div><div class="cap"><b>Наведение</b> · фон #E9EBE7</div></div>
+      <div><div class="mod open"><div class="s"><span class="no">02</span><div class="tt"><small>Модуль 2 · темы 11–17</small><b>Очищение ментальности</b></div><span class="tag">7 тем</span><span class="pl"></span></div><div class="body"><ul><li><span class="n">11</span>Этап грубой очистки вашей ментальности на пути к процветанию.</li><li><span class="n">12</span>Деструктивные наследственные, традиционные, исторические заморочки…</li></ul></div></div><div class="cap"><b>Раскрыт</b> · «+» превращается в «−»</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Поля формы · состояния</h3>
+    <div class="row">
+      <div><div class="fbox"><div class="inp">Имя</div></div><div class="cap"><b>Пустое</b></div></div>
+      <div><div class="fbox"><div class="inp focus">Имя|</div></div><div class="cap"><b>Фокус</b></div></div>
+      <div><div class="fbox"><div class="inp fill">Анна</div></div><div class="cap"><b>Заполнено</b></div></div>
+      <div><div class="fbox"><div class="inp err">+7 999</div><div class="errt">Проверьте номер телефона</div></div><div class="cap"><b>Ошибка</b></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Карточка цены</h3>
+    <div class="row">
+      <div class="pc best"><span class="tab">до 30 октября</span><div class="card"><b>249 999 ₽</b><span>одно занятие — 9 999 ₽</span><span class="tag">выгода — 124 976 ₽</span></div><div class="cap"><b>Выделенная</b> · ближайшая дата</div></div>
+      <div class="pc"><span class="tab">до 15 ноября</span><div class="card"><b>259 999 ₽</b><span>одно занятие — 10 400 ₽</span><span class="tag">выгода — 114 976 ₽</span></div><div class="cap"><b>Обычная</b></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Сетка и отступы</h3>
+    <table class="grid">
+      <tr><th>Адаптация</th><th>Ширина</th><th>Колонки</th><th>Поля</th><th>Межколонник</th><th>Между блоками</th><th>Скругление</th></tr>
+      <tr><td>Компьютер</td><td>1440</td><td>12</td><td>40</td><td>20</td><td>120</td><td>30</td></tr>
+      <tr><td>Планшет горизонтально</td><td>1024</td><td>12</td><td>32</td><td>20</td><td>100</td><td>30</td></tr>
+      <tr><td>Планшет вертикально</td><td>768</td><td>8</td><td>24</td><td>16</td><td>84</td><td>30</td></tr>
+      <tr><td>Телефон горизонтально</td><td>640</td><td>6</td><td>20</td><td>16</td><td>72</td><td>30</td></tr>
+      <tr><td>Мобильный</td><td>375</td><td>4</td><td>16</td><td>12</td><td>60</td><td>24</td></tr>
+    </table>
+    <div style="margin-top:30px; display:grid; grid-template-columns: 1fr 360px; gap:40px; align-items:end">
+      <div><div class="gv"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="cap">12 колонок · 1440</div></div>
+      <div class="sp"><div><i style="height:8px"></i>8</div><div><i style="height:12px"></i>12</div><div><i style="height:20px"></i>20</div><div><i style="height:32px"></i>32</div><div><i style="height:56px"></i>56</div><div><i style="height:80px"></i>80</div></div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

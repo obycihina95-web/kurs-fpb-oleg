@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Курс ФПБ — лендинг</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --m: 40px; --bg:#ffffff; --panel:#f2f3f0; --ink:#13201c; --muted:#6f7773; --g:#0f4a3f; --g2:#003d36; --gd:#00241f; --soft:#dde9e1; --softInk:#1f5a47; --tan:#c29a5b; --line:rgba(0,0,0,.09); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Onest', sans-serif; color: var(--ink); background: var(--bg); }
+  #page { max-width: 1440px; margin: 0 auto; padding: 24px var(--m) 40px; position: relative; }
+  .sec { margin-top: 120px; }
+  .ph { border-radius: 30px; background-size: cover; background-position: center; position: relative; }
+  .panel { background: var(--panel); border-radius: 30px; }
+  h1, h2 { font-weight: 400; letter-spacing: -.035em; line-height: 1.02; }
+  h2 { font-size: 60px; }
+  .up { text-transform: uppercase; letter-spacing: -.015em; }
+  .lbl { font: 500 13px 'Onest'; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .muted { color: var(--muted); }
+  .tag { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: 999px; background: var(--soft); color: var(--softInk); font: 500 14px 'Onest'; white-space: nowrap; }
+  .n { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 28px; padding: 0 10px; border-radius: 999px; border: 1px solid var(--line); font: 500 13px 'Onest'; color: var(--muted); flex: none; }
+  .btn { display: inline-flex; align-items: center; gap: 12px; height: 56px; padding: 0 30px; border-radius: 999px; background: var(--g); color: #fff; font: 500 17px 'Onest'; white-space: nowrap; }
+  .btn.light { background: #fff; color: var(--ink); }
+  .btn.line { background: transparent; border: 1px solid var(--line); color: var(--ink); }
+  .ar { width: 40px; height: 40px; border-radius: 50%; background: #fff; display: grid; place-items: center; flex: none; color: var(--ink); }
+  .ar.g { background: var(--soft); color: var(--g); }
+  .ar svg { width: 15px; height: 15px; }
+  .chip { position: absolute; display: inline-flex; align-items: center; gap: 12px; height: 56px; padding: 0 22px 0 8px; border-radius: 999px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.12); font: 500 15px 'Onest'; }
+  .chip .av { width: 40px; height: 40px; border-radius: 50%; background: url(model.jpg) center 18%/cover; }
+  .chip small { display: block; font: 400 12px 'Onest'; color: var(--muted); }
+
+  /* шапка */
+  .nav { display: flex; align-items: center; gap: 10px; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 12px; font: 600 16px 'Onest'; letter-spacing: .06em; margin-right: 40px; }
+  .logo b { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; font: 500 15px 'Onest'; color: var(--g); }
+  .menu { display: flex; gap: 6px; }
+  .menu span { height: 40px; display: inline-flex; align-items: center; padding: 0 16px; border-radius: 999px; font: 500 14px 'Onest'; letter-spacing: .04em; text-transform: uppercase; }
+  .menu span:first-child { background: var(--panel); }
+  .nav .btn { margin-left: auto; height: 46px; font-size: 15px; padding: 0 24px; }
+
+  /* hero */
+  #hero { display: grid; grid-template-columns: 600px 1fr; gap: 20px; height: 760px; margin-top: 16px; }
+  #hero .l { display: flex; flex-direction: column; padding: 60px 10px 10px 4px; }
+  #hero h1 { font-size: 68px; text-transform: uppercase; letter-spacing: -.03em; line-height: .98; }
+  #hero .reg { margin-top: auto; }
+  #hero .reg .row { display: flex; align-items: center; gap: 18px; padding: 16px 0; border-top: 1px solid var(--line); font: 400 16px 'Onest'; }
+  #hero .reg .row:last-child { border-bottom: 1px solid var(--line); }
+  #hero .reg .row b { font: 400 30px/1 'Onest'; letter-spacing: -.03em; width: 64px; color: var(--g); }
+  #hero .reg .row p { flex: 1; }
+  #hero .act { display: flex; align-items: center; gap: 20px; margin-top: 30px; }
+  #hero .act .m b { display: block; font: 500 17px 'Onest'; }
+  #hero .act .m span { font: 400 14px 'Onest'; color: var(--muted); }
+  #hero .r { background-image: url(photo/yacht-turq.jpg); background-position: center 55%; }
+  #hero .r .top { position: absolute; left: 24px; right: 24px; top: 24px; display: flex; justify-content: space-between; }
+  #hero .r .top .tag { background: rgba(255,255,255,.92); color: var(--ink); height: 40px; padding: 0 18px; }
+  #hero .r .chip { left: 24px; bottom: 24px; }
+  #hero .r .box { position: absolute; right: 24px; bottom: 24px; width: 300px; background: #fff; border-radius: 22px; padding: 20px 22px; }
+  #hero .r .box b { display: block; font: 300 64px/1 'Onest'; letter-spacing: -.045em; }
+  #hero .r .box span { font: 400 15px 'Onest'; color: var(--muted); }
+
+  /* для кого */
+  #who { display: grid; grid-template-columns: 520px 1fr; gap: 50px; }
+  #who .l { display: flex; flex-direction: column; }
+  #who h2 { text-transform: uppercase; font-size: 56px; letter-spacing: -.02em; }
+  #who .l .ph { flex: 1; margin-top: 40px; min-height: 420px; background-image: url(photo/beach-trop.jpg); background-position: 30% center; }
+  #who .l .ph .btn { position: absolute; left: 22px; bottom: 22px; }
+  #who .row { display: flex; align-items: center; gap: 22px; padding: 22px 4px; border-top: 1px solid var(--line); }
+  #who .row:last-child { border-bottom: 1px solid var(--line); }
+  #who .row p { flex: 1; font: 400 19px/1.35 'Onest'; }
+
+  /* история */
+  #story { display: grid; grid-template-columns: 560px 1fr; gap: 20px; }
+  #story .photo { min-height: 760px; background-image: url(model.jpg); background-position: center 18%; }
+  #story .photo .chip { left: 24px; bottom: 24px; }
+  #story .txt { background: var(--gd); color: #f4ecdc; border-radius: 30px; padding: 56px 60px; display: flex; flex-direction: column; }
+  #story .txt .lbl { color: #9fb5ad; }
+  #story h2 { font-size: 52px; margin-top: 18px; }
+  #story .p1 { font: 400 18.5px/1.65 'Onest'; color: #b7c8c1; margin-top: 28px; }
+  #story .q { display: flex; gap: 20px; margin-top: 34px; }
+  #story .q i { font: 400 120px/0.8 'Onest'; color: var(--tan); font-style: normal; }
+  #story .q p { font: 400 26px/1.3 'Onest'; letter-spacing: -.01em; padding-top: 8px; }
+  #story .stats { display: flex; gap: 30px; margin-top: auto; padding-top: 24px; border-top: 1px solid rgba(246,232,207,.14); }
+  #story .stats div { flex: 1; }
+  #story .stats b { display: block; font: 300 58px/1 'Onest'; letter-spacing: -.045em; color: #fff; }
+  #story .stats span { display: block; font: 400 14px/1.4 'Onest'; color: #9fb5ad; margin-top: 8px; }
+
+  /* формат */
+  #fmt { height: 560px; background-image: url(photo/yacht-aerial.jpg); background-position: center 60%; }
+  #fmt .card { position: absolute; left: 28px; top: 28px; bottom: 28px; width: 560px; background: #fff; border-radius: 26px; padding: 40px 44px; display: flex; flex-direction: column; }
+  #fmt .card .tag { align-self: flex-start; }
+  #fmt .big { font: 300 170px/0.82 'Onest'; letter-spacing: -.06em; color: var(--g); margin-top: auto; }
+  #fmt .big small { font-size: 30px; letter-spacing: -.02em; color: var(--ink); margin-left: 12px; }
+  #fmt .card p { margin-top: 30px; font: 400 18px/1.55 'Onest'; color: var(--muted); }
+  #fmt .side { position: absolute; right: 28px; bottom: 28px; display: flex; gap: 10px; }
+  #fmt .side .tag { background: rgba(255,255,255,.94); color: var(--ink); height: 42px; padding: 0 20px; font-size: 15px; }
+
+  /* цели */
+  #goals { display: grid; grid-template-columns: 500px 1fr; gap: 60px; align-items: start; }
+  #goals .l .intro { font: 400 18px/1.55 'Onest'; color: var(--muted); margin-top: 24px; }
+  #goals .laws { margin-top: 36px; background: var(--panel); border-radius: 26px; padding: 28px 30px; }
+  #goals .laws .lead { font: 500 17px/1.4 'Onest'; }
+  #goals .laws .lead b { color: var(--g); font-weight: 500; margin-right: 8px; }
+  #goals .laws .row { display: flex; flex-direction: column; gap: 8px; margin: 18px 0 16px; }
+  #goals .laws .row span { align-self: flex-start; height: 40px; display: inline-flex; align-items: center; padding: 0 18px; border-radius: 999px; background: #fff; color: var(--softInk); font: 500 15.5px 'Onest'; }
+  #goals .laws .end { font: 400 15px/1.45 'Onest'; color: var(--muted); }
+  #goals .list .gr { display: flex; gap: 22px; align-items: flex-start; padding: 22px 4px; border-top: 1px solid var(--line); }
+  #goals .list .gr:last-child { border-bottom: 1px solid var(--line); }
+  #goals .list .gr p { font: 400 18px/1.45 'Onest'; flex: 1; }
+
+  /* программа */
+  #prog .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+  #prog .head .r { display: flex; gap: 10px; align-items: center; }
+  #prog .mods { margin-top: 44px; display: flex; flex-direction: column; gap: 12px; }
+  #prog details { background: var(--panel); border-radius: 28px; }
+  #prog details[open] { background: var(--panel); }
+  #prog summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 120px 1fr auto auto; align-items: center; gap: 24px; padding: 28px 30px 28px 36px; }
+  #prog summary::-webkit-details-marker { display: none; }
+  #prog summary .no { font: 300 64px/1 'Onest'; letter-spacing: -.05em; color: var(--g); }
+  #prog summary .tt small { display: block; font: 500 13px 'Onest'; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  #prog summary .tt b { font: 400 30px/1.15 'Onest'; letter-spacing: -.025em; }
+  #prog summary .tag { background: #fff; color: var(--ink); height: 38px; padding: 0 16px; }
+  #prog summary .pl { width: 52px; height: 52px; border-radius: 50%; background: #fff; display: grid; place-items: center; position: relative; }
+  #prog summary .pl::before, #prog summary .pl::after { content: ''; position: absolute; width: 16px; height: 1.6px; background: var(--ink); border-radius: 1px; transition: transform .2s; }
+  #prog summary .pl::after { transform: rotate(90deg); }
+  #prog details[open] summary .pl { background: var(--g); }
+  #prog details[open] summary .pl::before, #prog details[open] summary .pl::after { background: #fff; }
+  #prog details[open] summary .pl::after { transform: rotate(0deg); }
+  #prog .body { padding: 0 36px 34px 180px; }
+  #prog .body ul { columns: 2; column-gap: 40px; border-top: 1px solid var(--line); padding-top: 6px; }
+  #prog li { list-style: none; break-inside: avoid; display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); font: 400 15.5px/1.45 'Onest'; }
+  #prog li .n { min-width: 38px; height: 24px; font-size: 12px; background: #fff; border: 0; margin-top: 1px; }
+
+  /* цены */
+  #price .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 50px; }
+  #price .tab { display: inline-flex; align-items: center; height: 48px; padding: 0 22px; background: var(--panel); border-radius: 20px 20px 0 0; font: 500 16px 'Onest'; color: var(--g); }
+  #price .card { background: var(--panel); border-radius: 0 26px 26px 26px; padding: 26px 24px; height: 250px; display: flex; flex-direction: column; }
+  #price .card b { font: 400 42px/1 'Onest'; letter-spacing: -.035em; }
+  #price .card span { font: 400 16px 'Onest'; color: var(--muted); margin-top: 12px; }
+  #price .card .tag { margin-top: auto; align-self: flex-start; }
+  #price .best .tab, #price .best .card { background: var(--g); color: #fff; }
+  #price .best .card span { color: rgba(255,255,255,.75); }
+  #price .best .card .tag { background: #fff; color: var(--g); }
+  #price .note { margin-top: 18px; font: 400 15px 'Onest'; color: var(--muted); }
+  #price .bot { display: grid; grid-template-columns: 1fr 1.25fr 1.6fr; gap: 14px; margin-top: 26px; }
+  #price .box { background: var(--panel); border-radius: 26px; padding: 30px; min-height: 260px; display: flex; flex-direction: column; }
+  #price .box small { font: 400 17px/1.4 'Onest'; color: var(--muted); }
+  #price .box span { font: 400 15px/1.45 'Onest'; color: var(--muted); margin-top: 8px; }
+  #price .box b { font: 400 54px/1 'Onest'; letter-spacing: -.04em; margin-top: auto; }
+  #price .cond { border: 1px solid var(--line); border-radius: 26px; padding: 30px 32px; }
+  #price .cond h4 { font: 500 19px/1.4 'Onest'; }
+  #price .cond div { display: flex; gap: 20px; align-items: center; margin-top: 22px; font: 400 16.5px/1.45 'Onest'; color: var(--muted); }
+  #price .cond div b { font: 300 40px 'Onest'; letter-spacing: -.04em; color: var(--g); flex: none; white-space: nowrap; }
+
+  /* заявка */
+  #form { display: grid; grid-template-columns: 1fr 600px; gap: 20px; }
+  #form .pic { min-height: 640px; background-image: url(photo/pool-palms.jpg); background-position: center 60%; }
+  #form .pic .chip { left: 24px; bottom: 24px; }
+  #form .f { background: var(--gd); color: #f4ecdc; border-radius: 30px; padding: 50px; display: flex; flex-direction: column; }
+  #form .f .lbl { color: #9fb5ad; }
+  #form .f h3 { font: 400 46px/1.04 'Onest'; letter-spacing: -.035em; margin-top: 18px; }
+  #form .f .sub { font: 400 17px/1.5 'Onest'; color: #b7c8c1; margin: 16px 0 30px; }
+  #form .inp { height: 62px; border-radius: 999px; border: 1px solid rgba(246,232,207,.2); display: flex; align-items: center; padding: 0 26px; font: 400 17px 'Onest'; color: #8fa69e; margin-bottom: 12px; }
+  #form .f .btn { margin-top: 10px; background: #fff; color: var(--gd); justify-content: space-between; padding: 0 8px 0 30px; height: 62px; }
+  #form .f .btn .ar { background: var(--g); color: #fff; }
+  #form .f .ok { font: 400 13px/1.45 'Onest'; color: #8fa69e; margin-top: auto; padding-top: 20px; }
+
+  /* подвал */
+  footer { margin-top: 20px; background: var(--panel); border-radius: 30px; padding: 46px 50px; display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; }
+  footer h4 { font: 400 40px/1.05 'Onest'; letter-spacing: -.035em; }
+  footer .c small { display: block; font: 500 14px 'Onest'; margin-bottom: 12px; }
+  footer .c p { font: 400 15px/1.5 'Onest'; color: var(--muted); }
+  footer .src { grid-column: 1 / 4; padding-top: 26px; border-top: 1px solid var(--line); font: 400 13px/1.55 'Onest'; color: var(--muted); }
+
+  /* бургер и мобильное меню */
+  .burger { display: none; width: 46px; height: 46px; border-radius: 50%; background: var(--panel); margin-left: 10px; position: relative; flex: none; }
+  .burger i { position: absolute; left: 14px; right: 14px; height: 1.6px; background: var(--ink); border-radius: 1px; }
+  .burger i:first-child { top: 19px; } .burger i:last-child { top: 26px; }
+  .mnav { display: none; }
+  body.menu-open .mnav { display: flex; position: absolute; left: 0; top: 0; width: 100%; height: 100vh; z-index: 50; background: #fff; flex-direction: column; padding: 24px var(--m) 32px; }
+  .mnav .top { display: flex; align-items: center; height: 64px; }
+  .mnav .x { margin-left: auto; width: 46px; height: 46px; border-radius: 50%; background: var(--g); position: relative; }
+  .mnav .x::before, .mnav .x::after { content: ''; position: absolute; left: 14px; right: 14px; top: 22px; height: 1.6px; background: #fff; transform: rotate(45deg); }
+  .mnav .x::after { transform: rotate(-45deg); }
+  .mnav .items { margin-top: 40px; }
+  .mnav .items a { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; border-top: 1px solid var(--line); font: 400 30px 'Onest'; letter-spacing: -.025em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+  .mnav .items a:last-child { border-bottom: 1px solid var(--line); }
+  .mnav .foot { margin-top: auto; display: flex; flex-direction: column; gap: 14px; }
+  .mnav .foot .btn { justify-content: center; }
+  .mnav .foot p { font: 400 14px/1.5 'Onest'; color: var(--muted); }
+
+  /* ===== 1024 — планшет горизонтально ===== */
+  @media (max-width: 1100px) {
+    :root { --m: 32px; }
+    .sec { margin-top: 100px; }
+    h2 { font-size: 48px; }
+    .menu { display: none; }
+    .burger { display: block; }
+    #hero { grid-template-columns: 1fr 1fr; height: 640px; }
+    #hero .l { padding-top: 40px; }
+    #hero h1 { font-size: 50px; }
+    #hero .reg .row { font-size: 15px; gap: 14px; padding: 13px 0; }
+    #hero .reg .row b { font-size: 26px; width: 52px; }
+    #hero .r .box { width: 220px; }
+    #hero .r .box b { font-size: 52px; }
+    #who { grid-template-columns: 380px 1fr; gap: 40px; }
+    #who h2 { font-size: 44px; }
+    #who .row { padding: 18px 2px; }
+    #who .row p { font-size: 17px; }
+    #story { grid-template-columns: 400px 1fr; }
+    #story .photo { min-height: 680px; }
+    #story .txt { padding: 44px 44px; }
+    #story h2 { font-size: 42px; }
+    #story .p1 { font-size: 16.5px; }
+    #story .q i { font-size: 96px; }
+    #story .q p { font-size: 22px; }
+    #story .stats b { font-size: 46px; }
+    #fmt { height: 500px; }
+    #fmt .card { width: 480px; padding: 34px 36px; }
+    #fmt .big { font-size: 140px; }
+    #goals { grid-template-columns: 360px 1fr; gap: 40px; }
+    #goals .list .gr p { font-size: 16.5px; }
+    #prog summary { grid-template-columns: 90px 1fr auto auto; gap: 18px; padding: 24px 24px 24px 28px; }
+    #prog summary .no { font-size: 52px; }
+    #prog summary .tt b { font-size: 25px; }
+    #prog .body { padding: 0 28px 28px 136px; }
+    #prog .body ul { columns: 1; }
+    #price .row { gap: 10px; }
+    #price .tab { padding: 0 14px; font-size: 14px; height: 42px; }
+    #price .card { padding: 20px 16px; height: 220px; }
+    #price .card b { font-size: 29px; }
+    #price .card span { font-size: 14px; }
+    #price .card .tag { font-size: 12.5px; padding: 0 10px; }
+    #price .bot { grid-template-columns: 1fr 1fr; }
+    #price .cond { grid-column: 1 / 3; }
+    #price .box { min-height: 220px; }
+    #price .box b { font-size: 46px; }
+    #form { grid-template-columns: 1fr 1fr; }
+    #form .f { padding: 40px; }
+    #form .f h3 { font-size: 38px; }
+    footer { padding: 40px; }
+    footer h4 { font-size: 34px; }
+  }
+
+  /* ===== 768 — планшет вертикально ===== */
+  @media (max-width: 900px) {
+    :root { --m: 24px; }
+    .sec { margin-top: 84px; }
+    h2 { font-size: 44px; }
+    #price h2 br { display: none; }
+    #hero { grid-template-columns: 1fr; height: auto; gap: 24px; }
+    #hero .l { padding: 30px 0 0; }
+    #hero h1 { font-size: 56px; }
+    #hero .reg { margin-top: 40px; }
+    #hero .r { height: 560px; }
+    #who { grid-template-columns: 1fr; gap: 30px; }
+    #who .l .ph { min-height: 380px; margin-top: 30px; }
+    #story { grid-template-columns: 1fr; }
+    #story .photo { min-height: 640px; }
+    #fmt { height: auto; padding: 380px 24px 24px; }
+    #fmt .card { position: relative; left: auto; top: auto; bottom: auto; width: 100%; }
+    #fmt .big { margin-top: 40px; }
+    #fmt .side { top: 24px; bottom: auto; right: 24px; }
+    #goals { grid-template-columns: 1fr; gap: 30px; }
+    #prog .head { flex-direction: column; align-items: flex-start; gap: 24px; }
+    #prog .body { padding: 0 24px 24px 24px; }
+    #price .row { grid-template-columns: 1fr 1fr; gap: 14px 12px; }
+    #price .row > div:first-child { grid-column: 1 / 3; }
+    #price .card { height: 200px; }
+    #price .card b { font-size: 34px; }
+    #form { grid-template-columns: 1fr; }
+    #form .pic { min-height: 420px; }
+    footer { grid-template-columns: 1fr 1fr; gap: 30px; }
+    footer > div:first-child { grid-column: 1 / 3; }
+    footer .src { grid-column: 1 / 3; }
+  }
+
+  /* ===== 640 — телефон горизонтально ===== */
+  @media (max-width: 700px) {
+    :root { --m: 20px; }
+    .sec { margin-top: 72px; }
+    h2 { font-size: 36px; }
+    .nav .btn { display: none; }
+    .burger { margin-left: auto; }
+    #hero h1 { font-size: 44px; }
+    #hero .r { height: 420px; }
+    #hero .r .box { width: 170px; padding: 16px 18px; }
+    #hero .r .box b { font-size: 44px; }
+    #who h2 { font-size: 36px; }
+    #who .row { gap: 16px; }
+    #story .photo { min-height: 520px; }
+    #story .txt { padding: 34px 30px; }
+    #story h2 { font-size: 34px; }
+    #story .stats { flex-wrap: wrap; gap: 20px; }
+    #story .stats div { flex: 1 1 40%; }
+    #fmt { padding-top: 300px; }
+    #fmt .big { font-size: 110px; }
+    #prog summary { grid-template-columns: 64px 1fr auto; padding: 20px; }
+    #prog summary .tag { display: none; }
+    #prog summary .no { font-size: 40px; }
+    #prog summary .tt b { font-size: 21px; }
+    #prog .body { padding: 0 20px 20px; }
+    #price .bot { grid-template-columns: 1fr; }
+    #price .cond { grid-column: auto; }
+    #form .f { padding: 32px 28px; }
+    #form .f h3 { font-size: 32px; }
+    #form .pic { min-height: 340px; }
+    footer { padding: 32px 28px; }
+  }
+
+  /* ===== 375 — мобильный ===== */
+  @media (max-width: 480px) {
+    :root { --m: 16px; }
+    #page { padding-top: 12px; }
+    .sec { margin-top: 60px; }
+    h2 { font-size: 30px; }
+    .logo { margin-right: 0; font-size: 14px; }
+    .btn { height: 52px; padding: 0 24px; font-size: 16px; }
+    #hero .l { padding-top: 20px; }
+    #hero h1 { font-size: 34px; margin-top: 20px !important; }
+    #hero .reg { margin-top: 30px; }
+    #hero .reg .row { font-size: 14px; }
+    #hero .reg .row b { font-size: 22px; width: 40px; }
+    #hero .reg .row .ar { display: none; }
+    #hero .act { flex-direction: column; align-items: flex-start; gap: 14px; }
+    #hero .act .btn { width: 100%; justify-content: center; }
+    #hero .r { height: 460px; border-radius: 24px; }
+    #hero .r .top { left: 14px; right: 14px; top: 14px; }
+    #hero .r .top .tag { height: 34px; padding: 0 12px; font-size: 13px; }
+    #hero .r .chip { left: 14px; bottom: 14px; height: 50px; padding-right: 16px; font-size: 14px; }
+    #hero .r .chip .av { width: 34px; height: 34px; }
+    #hero .r .box { right: 14px; bottom: 76px; width: auto; padding: 12px 16px; }
+    #hero .r .box b { font-size: 38px; }
+    #who h2 { font-size: 30px; }
+    #who .l .ph { min-height: 320px; }
+    #who .l .ph .btn { left: 14px; right: 14px; justify-content: center; }
+    #who .row { padding: 16px 0; gap: 12px; }
+    #who .row p { font-size: 15.5px; }
+    #who .row .ar { display: none; }
+    .n { min-width: 38px; height: 24px; font-size: 12px; }
+    #story .photo { min-height: 440px; }
+    #story .txt { padding: 28px 22px; }
+    #story h2 { font-size: 28px; }
+    #story .p1 { font-size: 15px; }
+    #story .q { gap: 12px; }
+    #story .q i { font-size: 70px; }
+    #story .q p { font-size: 18px; }
+    #story .stats b { font-size: 38px; }
+    #story .stats div { flex: 1 1 100%; }
+    #fmt { padding: 240px 14px 14px; border-radius: 24px; }
+    #fmt .side { top: 14px; right: 14px; left: 14px; flex-wrap: wrap; }
+    #fmt .side .tag { height: 34px; font-size: 13px; padding: 0 12px; }
+    #fmt .card { padding: 26px 22px; }
+    #fmt .big { font-size: 90px; margin-top: 26px; }
+    #fmt .big small { font-size: 22px; }
+    #fmt .card p { font-size: 15px; }
+    #goals .laws { padding: 22px 20px; }
+    #goals .laws .row span { height: auto; min-height: 36px; padding: 8px 14px; font-size: 14px; }
+    #goals .list .gr { gap: 12px; padding: 16px 0; }
+    #goals .list .gr p { font-size: 15px; }
+    #prog .head .r { flex-wrap: wrap; }
+    #prog .head .r .btn { width: 100%; justify-content: center; }
+    #prog summary { grid-template-columns: 1fr auto; gap: 12px; padding: 18px; }
+    #prog summary .no { display: none; }
+    #prog summary .tt small { font-size: 11px; }
+    #prog summary .tt b { font-size: 18px; }
+    #prog summary .pl { width: 44px; height: 44px; }
+    #prog .body { padding: 0 18px 18px; }
+    #prog li { font-size: 14px; gap: 10px; }
+    #price .row { grid-template-columns: 1fr; }
+    #price .row > div:first-child { grid-column: auto; }
+    #price .card { height: auto; min-height: 170px; gap: 14px; }
+    #price .card b { font-size: 34px; }
+    #price .box { min-height: 170px; padding: 24px; }
+    #price .box b { font-size: 40px; margin-top: 30px; }
+    #price .cond { padding: 24px 22px; }
+    #price .cond div b { font-size: 30px; }
+    #form .pic { min-height: 280px; border-radius: 24px; }
+    #form .f { padding: 28px 20px; border-radius: 24px; }
+    #form .f h3 { font-size: 28px; }
+    #form .inp { height: 56px; font-size: 15px; padding: 0 20px; }
+    #form .f .btn { height: 56px; }
+    footer { grid-template-columns: 1fr; padding: 28px 22px; border-radius: 24px; }
+    footer > div:first-child, footer .src { grid-column: auto; }
+    footer h4 { font-size: 26px; }
+    footer .btn { width: 100%; justify-content: center; }
+  }
+
+  /* ===== прототип: ч/б, без фото ===== */
+  body.wf { --panel:#efefef; --ink:#111; --muted:#777; --g:#111; --g2:#111; --gd:#e4e4e4; --soft:#e2e2e2; --softInk:#222; --tan:#999; }
+  body.wf .ph { background-image: none !important; background-color: #d6d6d6; overflow: hidden; }
+  body.wf .wfx { position: absolute; inset: 0; width: 100%; height: 100%; }
+  body.wf .wfl { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font: 500 13px 'Onest'; letter-spacing: .12em; text-transform: uppercase; color: #666; background: #d6d6d6; padding: 4px 10px; }
+  body.wf #fmt .wfl { top: 60px; transform: translateX(-50%); }
+  body.wf .chip .av { background: #bdbdbd !important; }
+  body.wf #story .txt, body.wf #form .f { color: #111; }
+  body.wf #story .txt .lbl, body.wf #form .f .lbl, body.wf #story .stats span, body.wf #form .f .ok { color: #666; }
+  body.wf #story .p1, body.wf #form .f .sub { color: #555; }
+  body.wf #story .stats b { color: #111; }
+  body.wf #story .stats { border-color: rgba(0,0,0,.12); }
+  body.wf #form .inp { border-color: rgba(0,0,0,.2); color: #888; }
+  body.wf #form .f .btn { background: #111; color: #fff; }
+  body.wf #form .f .btn .ar { background: #fff; color: #111; }
+  body.wf #price .best .card .tag { background: #fff; color: #111; }
+
+  /* кликабельность */
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 24px; }
+  a { color: inherit; text-decoration: none; }
+  .menu a { height: 40px; display: inline-flex; align-items: center; padding: 0 16px; border-radius: 999px; font: 500 14px 'Onest'; letter-spacing: .04em; text-transform: uppercase; transition: background .2s; }
+  .menu a:hover, .menu a.act { background: var(--panel); }
+  .btn { cursor: pointer; border: 0; transition: background .2s, box-shadow .2s, transform .1s; }
+  .btn:hover { background: #0b3a31; box-shadow: 0 10px 24px rgba(15,74,63,.28); }
+  .btn:active { background: var(--gd); transform: scale(.98); }
+  .btn.light:hover { background: var(--panel); box-shadow: none; }
+  .burger { cursor: pointer; }
+  .mnav .x { cursor: pointer; }
+  #prog summary:hover { background: rgba(0,0,0,.025); border-radius: 28px; }
+  #who .row, #hero .reg .row { transition: background .2s; }
+  .ar { transition: background .2s, color .2s; }
+  #who .row:hover .ar, #hero .reg .row:hover .ar { background: var(--g); color: #fff; }
+  #form form { display: flex; flex-direction: column; }
+  #form input.inp { width: 100%; background: transparent; color: #fff; outline: none; font: 400 17px 'Onest'; transition: border-color .2s; }
+  #form input.inp::placeholder { color: #8fa69e; }
+  #form input.inp:focus { border-color: #f4ecdc; }
+  #form input.inp.bad { border-color: #e2836f; }
+  #form .errt { font: 400 13px 'Onest'; color: #e2836f; margin: -6px 0 10px 24px; min-height: 0; }
+  #form .errt:empty { display: none; }
+  #form .f button.btn { width: 100%; }
+  #form .f button.btn:hover { background: #f4ecdc; }
+  #form .done { padding: 30px 0; }
+  #form .done .ok-ic { width: 64px; height: 64px; border-radius: 50%; background: var(--g); color: #fff; display: grid; place-items: center; }
+  #form .done .ok-ic svg { width: 28px; height: 28px; }
+  #form .done h4 { font: 400 34px/1.1 'Onest'; letter-spacing: -.03em; margin-top: 24px; }
+  #form .done p { font: 400 17px/1.5 'Onest'; color: #b7c8c1; margin-top: 12px; }
+  body.menu-open { overflow: hidden; }
+  body.menu-open .mnav { position: fixed; }
+  @media (max-width: 480px) { #form input.inp { font-size: 15px; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="arr" viewBox="0 0 16 16"><path d="M3 13 13 3M5.5 3H13v7.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+<div id="page">
+
+<div class="nav">
+  <div class="logo"><b>₽</b>КУРС ФПБ</div>
+  <div class="menu"><a href="#who">Для кого</a><a href="#story">Ведущий</a><a href="#prog">Программа</a><a href="#price">Стоимость</a></div>
+  <a class="btn" href="#form">Записаться на курс</a>
+  <span class="burger" role="button" aria-label="Открыть меню" tabindex="0"><i></i><i></i></span>
+</div>
+
+<div class="mnav">
+  <div class="top"><div class="logo"><b>₽</b>КУРС ФПБ</div><span class="x"></span></div>
+  <div class="items"><a href="#who">Для кого <span class="ar g"><svg><use href="#arr"/></svg></span></a><a href="#story">Ведущий <span class="ar g"><svg><use href="#arr"/></svg></span></a><a href="#prog">Программа <span class="ar g"><svg><use href="#arr"/></svg></span></a><a href="#price">Стоимость <span class="ar g"><svg><use href="#arr"/></svg></span></a></div>
+  <div class="foot"><a class="btn" href="#form">Записаться на курс</a><p>Старт январь 2027 · 2027–2028<br>www.oleghappy.ru</p></div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="l">
+    <span class="tag" style="align-self:flex-start">Старт январь 2027</span>
+    <h1 style="margin-top:30px">Курс финансового процветания и богатства</h1>
+    <div class="reg">
+      <div class="row"><b>20+</b><p>Психогенетик — стаж 20+ лет (ИИМТ, ИМГА)</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+      <div class="row"><b>10+</b><p>Психолог — 10+ (МПГУ, РУДН)</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+      <div class="row"><b>20+</b><p>Педагог — 20+ (ОАВСРФ, МПГУ)</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+    </div>
+    <div class="act"><a class="btn" href="#form">Записаться на курс</a><div class="m"><b>Годовой курс</b><span>2027–2028</span></div></div>
+  </div>
+  <div class="ph r">
+    <div class="top"><span class="tag">2027–2028</span><span class="tag">www.oleghappy.ru</span></div>
+    <div class="chip"><div class="av"></div><div>Олег Шадурко<small>Ведущий курса</small></div></div>
+    <div class="box"><b>25</b><span>занятий</span></div>
+  </div>
+</section>
+
+<!-- ДЛЯ КОГО -->
+<section id="who" class="sec">
+  <div class="l">
+    <span class="lbl">Для кого</span>
+    <h2 style="margin-top:16px">Для кого данный курс будет полезен?</h2>
+    <div class="ph"><a class="btn light" href="#form">Записаться на курс</a></div>
+  </div>
+  <div>
+    <div class="row"><span class="n">01</span><p>Кто хочет значительно повысить свой доход</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+    <div class="row"><span class="n">02</span><p>Кто хочет установить в своей жизни закон процветания и богатства</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+    <div class="row"><span class="n">03</span><p>Кто хочет стать мультимиллионером</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+    <div class="row"><span class="n">04</span><p>Кто хочет перестать бороться за выживание</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+    <div class="row"><span class="n">05</span><p>Кто испытывает финансовые трудности</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+    <div class="row"><span class="n">06</span><p>У кого есть страх и тревожность за своё и детей будущее</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+    <div class="row"><span class="n">07</span><p>Кто просчитывает риски и имеет заначку «на черный день»</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+    <div class="row"><span class="n">08</span><p>У кого есть долги, систематические кредиты, займы, ипотека, опыт банкротства</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+    <div class="row"><span class="n">09</span><p>Кто не доволен своим доходом</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+    <div class="row"><span class="n">10</span><p>Кто отказывает себе в желанных приобретениях, в осуществлении материальных целей</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+    <div class="row"><span class="n">11</span><p>У кого предки имели опыт раскулачивания, экспроприации, отъема имущества/денег, мошеннических и криминальных схем</p><span class="ar g"><svg><use href="#arr"/></svg></span></div>
+  </div>
+</section>
+
+<!-- ИСТОРИЯ -->
+<section id="story" class="sec">
+  <div class="ph photo"><div class="chip"><div class="av"></div><div>Олег Шадурко<small>Ведущий курса</small></div></div></div>
+  <div class="txt">
+    <span class="lbl">Ведущий курса</span>
+    <h2>Что даёт мне право вести такой курс?</h2>
+    <p class="p1" data-k="story1"></p>
+    <div class="q"><i>“</i><p data-k="story2"></p></div>
+    <div class="stats">
+      <div><b>20+</b><span>Психогенетик — стаж 20+ лет (ИИМТ, ИМГА)</span></div>
+      <div><b>10+</b><span>Психолог — 10+ (МПГУ, РУДН)</span></div>
+      <div><b>20+</b><span>Педагог — 20+ (ОАВСРФ, МПГУ)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ФОРМАТ -->
+<section id="fmt" class="sec ph">
+  <div class="card">
+    <span class="tag">Годовой курс ФПБ</span>
+    <div class="big">25<small>занятий</small></div>
+    <p data-k="about"></p>
+  </div>
+  <div class="side"><span class="tag">Старт январь 2027</span><span class="tag">2027–2028</span></div>
+</section>
+
+<!-- ЦЕЛИ -->
+<section id="goals" class="sec">
+  <div class="l">
+    <span class="lbl">Результат</span>
+    <h2 style="margin-top:16px">Цели переобучения:</h2>
+    <div class="intro" data-k="goalsIntro"></div>
+    <div class="laws">
+      <div class="lead"><b>12</b><span data-k="lawsLead"></span></div>
+      <div class="row" data-laws></div>
+      <div class="end" data-k="lawsEnd"></div>
+    </div>
+  </div>
+  <div class="list" data-goals data-tpl="<div class='gr'><span class='n'>{n}</span><p>{t}</p></div>"></div>
+</section>
+
+<!-- ПРОГРАММА -->
+<section id="prog" class="sec">
+  <div class="head">
+    <div><span class="lbl">Программа</span><h2 style="margin-top:16px">Изучаемые темы:</h2></div>
+    <div class="r"><span class="tag">25 занятий</span><span class="tag">39 тем</span><a class="btn" href="#form">Записаться на курс</a></div>
+  </div>
+  <div class="mods">
+    <details open>
+      <summary><span class="no">01</span><div class="tt"><small>Модуль 1 · темы 1–10</small><b>Причины финансовых трудностей, паттерны и законы</b></div><span class="tag">10 тем</span><span class="pl"></span></summary>
+      <div class="body"><ul data-topics="1-10" data-tpl="<li><span class='n'>{n}</span><span>{t}</span></li>"></ul></div>
+    </details>
+    <details>
+      <summary><span class="no">02</span><div class="tt"><small>Модуль 2 · темы 11–17</small><b>Очищение ментальности на пути к процветанию</b></div><span class="tag">7 тем</span><span class="pl"></span></summary>
+      <div class="body"><ul data-topics="11-17" data-tpl="<li><span class='n'>{n}</span><span>{t}</span></li>"></ul></div>
+    </details>
+    <details>
+      <summary><span class="no">03</span><div class="tt"><small>Модуль 3 · темы 18–26</small><b>Доход, обмен и разум процветания</b></div><span class="tag">9 тем</span><span class="pl"></span></summary>
+      <div class="body"><ul data-topics="18-26" data-tpl="<li><span class='n'>{n}</span><span>{t}</span></li>"></ul></div>
+    </details>
+    <details>
+      <summary><span class="no">04</span><div class="tt"><small>Модуль 4 · темы 27–39</small><b>Заблуждения, духовность и смысл</b></div><span class="tag">13 тем</span><span class="pl"></span></summary>
+      <div class="body"><ul data-topics="27-39" data-tpl="<li><span class='n'>{n}</span><span>{t}</span></li>"></ul></div>
+    </details>
+  </div>
+</section>
+
+<!-- ЦЕНЫ -->
+<section id="price" class="sec">
+  <span class="lbl">Стоимость</span>
+  <h2 style="margin-top:16px">Самая выгодная цена за полный курс <br>при оплате заранее:</h2>
+  <div class="row">
+    <div class="best"><span class="tab">до 30 октября</span><div class="card"><b>249 999 ₽</b><span>одно занятие — 9 999 ₽</span><span class="tag">выгода — 124 976 ₽</span></div></div>
+    <div><span class="tab">до 15 ноября</span><div class="card"><b>259 999 ₽</b><span>одно занятие — 10 400 ₽</span><span class="tag">выгода — 114 976 ₽</span></div></div>
+    <div><span class="tab">до 30 ноября</span><div class="card"><b>269 999 ₽</b><span>одно занятие — 10 800 ₽</span><span class="tag">выгода — 104 976 ₽</span></div></div>
+    <div><span class="tab">до 15 декабря</span><div class="card"><b>279 999 ₽</b><span>одно занятие — 11 200 ₽</span><span class="tag">выгода — 94 976 ₽</span></div></div>
+    <div><span class="tab">до 30 декабря</span><div class="card"><b>289 999 ₽</b><span>одно занятие — 11 600 ₽</span><span class="tag">выгода — 84 976 ₽</span></div></div>
+  </div>
+  <div class="note">(*Тариф по акции действует в день совершения оплаты)</div>
+  <div class="bot">
+    <div class="box"><small>Стоимость одного занятия из курса</small><b>14 999 ₽</b></div>
+    <div class="box"><small>При покупке абонемента на курс из 25 занятий</small><span>(тогда одно занятие — 11 900 ₽; выгода — 74 976 ₽)</span><b>299 999 ₽</b></div>
+    <div class="cond">
+      <h4>Специальные дополнительные условия для участника курса:</h4>
+      <div><b>30 %</b>Дополнительная семейная скидка на второго участника в одной группе</div>
+      <div><b>30 %</b>На период обучения на курсе прохождение месячного интенсива «Финансовая девиктимизация»</div>
+    </div>
+  </div>
+</section>
+
+<!-- ЗАЯВКА -->
+<section id="form" class="sec">
+  <div class="ph pic"></div>
+  <div class="f">
+    <span class="lbl">Старт январь 2027</span>
+    <h3>Курс финансового процветания и богатства</h3>
+    <div class="sub">Оставьте заявку — мы свяжемся с вами и ответим на вопросы о курсе.</div>
+    <form id="lead" novalidate>
+      <input class="inp" name="name" placeholder="Имя" autocomplete="name" required>
+      <div class="errt" data-for="name"></div>
+      <input class="inp" name="phone" type="tel" placeholder="Телефон" autocomplete="tel" required>
+      <div class="errt" data-for="phone"></div>
+      <input class="inp" name="messenger" placeholder="Telegram или WhatsApp">
+      <button class="btn" type="submit">Записаться на курс <span class="ar"><svg><use href="#arr"/></svg></span></button>
+    </form>
+    <div class="done" hidden>
+      <div class="ok-ic"><svg viewBox="0 0 24 24"><path d="M5 12.5 10 17.5 19 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h4>Заявка отправлена</h4>
+      <p>Спасибо! Мы свяжемся с вами и ответим на вопросы о курсе.</p>
+    </div>
+    <div class="ok">Нажимая кнопку, вы соглашаетесь с договором-офертой на сайте www.oleghappy.ru</div>
+  </div>
+</section>
+
+<footer>
+  <div><h4>Курс финансового процветания и богатства</h4><div style="margin-top:22px"><a class="btn" href="#form">Записаться на курс</a></div></div>
+  <div class="c"><small>Старт</small><p>январь 2027<br>2027–2028 · 25 занятий</p></div>
+  <div class="c"><small>Сайт</small><p>www.oleghappy.ru</p></div>
+  <div class="src">В курсе представлены материалы личных откровений ведущего курса, идеи, полученные от Б.В. Сорина, Т.М. Сориной, Ч.К. Тойч, Д.М. Тойч.<br>*Приложение к договору-оферты, размещенному на сайте www.oleghappy.ru</div>
+</footer>
+
+</div>
+<script src="content.js"></script>
+<script>
+  fillK();
+  const q = new URLSearchParams(location.search);
+  if (q.get('menu')) document.body.classList.add('menu-open');
+
+  // бургер
+  const open = () => document.body.classList.add('menu-open'), close = () => document.body.classList.remove('menu-open');
+  document.querySelectorAll('.burger').forEach(b => { b.onclick = open; b.onkeydown = e => { if (e.key === 'Enter') open(); }; });
+  document.querySelectorAll('.mnav .x, .mnav a').forEach(b => b.addEventListener('click', close));
+  // подсветка пункта меню текущего раздела
+  const links = [...document.querySelectorAll('.menu a')];
+  const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(l => l.classList.toggle('act', l.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-40% 0px -55% 0px' });
+  ['who', 'story', 'prog', 'price'].forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+  // форма (демо: без отправки на сервер)
+  const form = document.getElementById('lead');
+  if (form) form.addEventListener('submit', e => {
+    e.preventDefault();
+    const f = form.elements; let ok = true;
+    const set = (n, msg) => { form.querySelector(`[data-for="${n}"]`).textContent = msg; f[n].classList.toggle('bad', !!msg); if (msg) ok = false; };
+    set('name', f.name.value.trim().length < 2 ? 'Введите имя' : '');
+    set('phone', f.phone.value.replace(/\D/g, '').length < 10 ? 'Проверьте номер телефона' : '');
+    if (!ok) return;
+    form.hidden = true; document.querySelector('#form .done').hidden = false;
+  });
+  form && form.querySelectorAll('input').forEach(i => i.addEventListener('input', () => { i.classList.remove('bad'); const er = form.querySelector(`[data-for="${i.name}"]`); if (er) er.textContent = ''; }));
+  if (q.get('wf')) {
+    document.body.classList.add('wf');
+    document.querySelectorAll('.ph').forEach(el => {
+      el.insertAdjacentHTML('afterbegin', '<svg class="wfx" preserveAspectRatio="none" viewBox="0 0 100 100"><line x1="0" y1="0" x2="100" y2="100" stroke="#b5b5b5" stroke-width="0.4" vector-effect="non-scaling-stroke"/><line x1="100" y1="0" x2="0" y2="100" stroke="#b5b5b5" stroke-width="0.4" vector-effect="non-scaling-stroke"/></svg><span class="wfl">Фото</span>');
+    });
+  }
+</script>
+</body>
+</html>
