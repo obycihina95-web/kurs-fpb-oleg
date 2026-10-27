@@ -38,4 +38,4 @@
 - **Согласовать с клиентом.** Названия 4 модулей программы, кнопки и форма заявки придуманы дизайнером.
 - **Цены.** «11 900 ₽» и «9 999 ₽ за занятие» указаны как в документе, по расчёту выходит 12 000 ₽ и 10 000 ₽.
 
-Фото-символы на сайте и в концепции 4 — Wikimedia Commons, логотипы размыты, цвета приглушены. Авторы и лицензии: Burj Al-Arab — Flickr, CC BY 2.0; Patek Philippe Nautilus 5711 — CC BY-SA 4.0; Rolls-Royce Phantom Drophead Coupé (BMW Museum) — CC BY-SA 4.0; Business Jet Over Las Vegas — CC BY-SA 4.0; яхта — Unsplash. При публикации на рабочем сайте указать авторов. Остальные фото концепций 1–3 — Unsplash, шрифт — Onest (Google Fonts), 3D-иконки — 3dicons.co (open source).
+Фото-символы на сайте и в концепции 4: Бурдж эль-Араб, джет, яхта, Rolls-Royce Dawn — Unsplash (бесплатная лицензия); Patek Philippe Nautilus 5711 — Wikimedia Commons, CC BY-SA 4.0 (надпись на циферблате размыта). Номера и логотипы размыты. При публикации на рабочем сайте указать авторов. Остальные фото концепций 1–3 — Unsplash, шрифт — Onest (Google Fonts), 3D-иконки — 3dicons.co (open source).
