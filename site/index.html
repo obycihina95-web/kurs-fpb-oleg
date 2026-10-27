@@ -28,7 +28,7 @@
   .ar.g { background: var(--soft); color: var(--g); }
   .ar svg { width: 15px; height: 15px; }
   .chip { position: absolute; display: inline-flex; align-items: center; gap: 12px; height: 56px; padding: 0 22px 0 8px; border-radius: 999px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.12); font: 500 15px 'Onest'; }
-  .chip .av { width: 40px; height: 40px; border-radius: 50%; background: url(model.jpg) center 18%/cover; }
+  .chip .av { width: 40px; height: 40px; border-radius: 50%; background: url(oleg.jpg) 48% 18%/220% auto no-repeat; }
   .chip small { display: block; font: 400 12px 'Onest'; color: var(--muted); }
 
   /* шапка */
@@ -52,7 +52,7 @@
   #hero .act { display: flex; align-items: center; gap: 20px; margin-top: 30px; }
   #hero .act .m b { display: block; font: 500 17px 'Onest'; }
   #hero .act .m span { font: 400 14px 'Onest'; color: var(--muted); }
-  #hero .r { background-image: url(photo/yacht-turq.jpg); background-position: center 55%; }
+  #hero .r { background-image: url(photo/sym-burj-al-arab.jpg); background-position: 55% center; }
   #hero .r .top { position: absolute; left: 24px; right: 24px; top: 24px; display: flex; justify-content: space-between; }
   #hero .r .top .tag { background: rgba(255,255,255,.92); color: var(--ink); height: 40px; padding: 0 18px; }
   #hero .r .chip { left: 24px; bottom: 24px; }
@@ -64,7 +64,7 @@
   #who { display: grid; grid-template-columns: 520px 1fr; gap: 50px; }
   #who .l { display: flex; flex-direction: column; }
   #who h2 { text-transform: uppercase; font-size: 56px; letter-spacing: -.02em; }
-  #who .l .ph { flex: 1; margin-top: 40px; min-height: 420px; background-image: url(photo/beach-trop.jpg); background-position: 30% center; }
+  #who .l .ph { flex: 1; margin-top: 40px; min-height: 420px; background-image: url(photo/sym-jet.jpg); background-position: 62% 45%; }
   #who .l .ph .btn { position: absolute; left: 22px; bottom: 22px; }
   #who .row { display: flex; align-items: center; gap: 22px; padding: 22px 4px; border-top: 1px solid var(--line); }
   #who .row:last-child { border-bottom: 1px solid var(--line); }
@@ -72,7 +72,7 @@
 
   /* история */
   #story { display: grid; grid-template-columns: 560px 1fr; gap: 20px; }
-  #story .photo { min-height: 760px; background-image: url(model.jpg); background-position: center 18%; }
+  #story .photo { min-height: 760px; background-image: url(oleg.jpg); background-position: center 20%; }
   #story .photo .chip { left: 24px; bottom: 24px; }
   #story .txt { background: var(--gd); color: #f4ecdc; border-radius: 30px; padding: 56px 60px; display: flex; flex-direction: column; }
   #story .txt .lbl { color: #9fb5ad; }
@@ -87,7 +87,7 @@
   #story .stats span { display: block; font: 400 14px/1.4 'Onest'; color: #9fb5ad; margin-top: 8px; }
 
   /* формат */
-  #fmt { height: 560px; background-image: url(photo/yacht-aerial.jpg); background-position: center 60%; }
+  #fmt { height: 560px; background-image: url(photo/sym-yacht.jpg); background-position: center 45%; }
   #fmt .card { position: absolute; left: 28px; top: 28px; bottom: 28px; width: 560px; background: #fff; border-radius: 26px; padding: 40px 44px; display: flex; flex-direction: column; }
   #fmt .card .tag { align-self: flex-start; }
   #fmt .big { font: 300 170px/0.82 'Onest'; letter-spacing: -.06em; color: var(--g); margin-top: auto; }
@@ -109,6 +109,8 @@
   #goals .list .gr:last-child { border-bottom: 1px solid var(--line); }
   #goals .list .gr p { font: 400 18px/1.45 'Onest'; flex: 1; }
 
+  #goals .watch { margin-top: 16px; height: 420px; background-image: url(photo/sym-nautilus.jpg); background-color: #f4f5f3; background-size: auto 112%; background-position: center 52%; background-repeat: no-repeat; }
+  @media (max-width: 900px) { #goals .watch { height: 360px; } }
   /* программа */
   #prog .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
   #prog .head .r { display: flex; gap: 10px; align-items: center; }
@@ -155,7 +157,7 @@
 
   /* заявка */
   #form { display: grid; grid-template-columns: 1fr 600px; gap: 20px; }
-  #form .pic { min-height: 640px; background-image: url(photo/pool-palms.jpg); background-position: center 60%; }
+  #form .pic { min-height: 640px; background-image: url(photo/sym-rolls-royce.jpg); background-position: 62% center; }
   #form .pic .chip { left: 24px; bottom: 24px; }
   #form .f { background: var(--gd); color: #f4ecdc; border-radius: 30px; padding: 50px; display: flex; flex-direction: column; }
   #form .f .lbl { color: #9fb5ad; }
@@ -544,6 +546,7 @@
       <div class="row" data-laws></div>
       <div class="end" data-k="lawsEnd"></div>
     </div>
+    <div class="ph watch"></div>
   </div>
   <div class="list" data-goals data-tpl="<div class='gr'><span class='n'>{n}</span><p>{t}</p></div>"></div>
 </section>
